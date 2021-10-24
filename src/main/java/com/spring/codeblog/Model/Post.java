@@ -1,6 +1,7 @@
 package com.spring.codeblog.Model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -70,4 +71,27 @@ public class Post {
         this.text = text;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return id.equals(post.id) && title.equals(post.title) && autor.equals(post.autor) && date.equals(post.date) && text.equals(post.text);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, autor, date, text);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", autor='" + autor + '\'' +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
